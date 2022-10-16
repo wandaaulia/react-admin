@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import AdminLTE, { Sidebar, Content, Row, Col, Box, Button } from 'adminlte-2-react';
+import ListGenre from './pages/ListGenre';
+import ListMoview from './pages/ListMoview';
+
+
 
 function App() {
+
+  const { Item } = Sidebar;
+
+  let sidebar = [
+    <> 
+    <Item key="genre" text="List Genre" to="/listGenre" />
+        <Item key="movie" text="List Movie" to="/listMovie" />
+</>
+  ]
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <AdminLTE title={["AdminLTE"]} titleShort={["He", "we"]} theme="blue" sidebar={sidebar}>
+      <ListGenre path="/listGenre" />
+      <ListMoview path="/listMovie"  />
+      </AdminLTE>
   );
 }
 
